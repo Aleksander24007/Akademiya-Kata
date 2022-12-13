@@ -2,11 +2,15 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
+        calc();
+
+    }
+        public static String calc() {
         Converter converter = new Converter();
         String[] actions = {"+", "-", "/", "*"};
         String[] regActions = {"\\+", "-", "/", "\\*"};
         Scanner scn = new Scanner(System.in);
-        System.out.println("Введите выражение: ");
+        System.out.print("Введите выражение: ");
         String exp = scn.nextLine();
         int actionIndex = -1;
         for (int i = 0; i < actions.length; i++) {
@@ -17,12 +21,10 @@ public class Calculator {
         }
         if (actionIndex == -1) {
             System.out.println("Некорректное выражение");
-            return;
         }
         String[] data = exp.split(regActions[actionIndex]);
         if (data.length >= 3) {
             System.out.println("Введите не больше двух чисел.");
-            return;
         }
 
         if(converter.isRoman(data[0]) == converter.isRoman(data[1])) {
@@ -38,7 +40,6 @@ public class Calculator {
             }
             if (a > 10 || b > 10) {
                 System.out.println("Введите число не больше 10");
-                return;
             }
             int result;
             switch (actions[actionIndex]){
@@ -64,5 +65,6 @@ public class Calculator {
         }else {
             System.out.println("Числа должны быть в одном формате.");
         }
+        return exp;
     }
 }
