@@ -2,16 +2,16 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-        calc();
+        calc("5+6");
 
     }
-        public static String calc() {
+        public static String calc(String input) {
         Converter converter = new Converter();
         String[] actions = {"+", "-", "/", "*"};
         String[] regActions = {"\\+", "-", "/", "\\*"};
         Scanner scn = new Scanner(System.in);
         System.out.print("Введите выражение: ");
-        String exp = scn.nextLine();
+        String exp = input;
         int actionIndex = -1;
         for (int i = 0; i < actions.length; i++) {
             if (exp.contains(actions[i])) {
